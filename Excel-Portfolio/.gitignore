@@ -15,3 +15,14 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+#Dir
+Advanced-Formulas
+Financial-Modeling
+Inventory-Dashboard
+Power-Query-ETL
+Sales-Analysis
+
+# Windows
+Thumbs.db
+Desktop.ini
