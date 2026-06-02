@@ -31,7 +31,7 @@ Portfolio/
 └── README.md (this file - main entry point)
 ```
 
-## 📧 Contact
+## Contact
 
 - **Email**: [contacts.zainul@gmail.com](mailto:contacts.zainul@gmail.com)
 
