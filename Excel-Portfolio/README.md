@@ -1,85 +1,31 @@
 # Excel Portfolio Projects
 
-Hi! I'm al, an Excel specialist showcasing my data analysis, visualization, and automation skills and my journey through real-world projects.
+Hi! I'm **Zainul Alim**, an Excel specialist showcasing my data analysis, visualization, and automation skills through real-world projects.
+
+## Projects
+
+### 1. [HR Workforce Analysis - Data Cleaning](./Data-Cleaning/HRDataset/)
+**Focus**: Data cleaning, transformation, and workforce analysis  
+**Dataset**: 311 employee records from Kaggle  
+**Key Skills**:
+- Power Query date format handling (MM/DD/YY → DD/MM/YYYY conversion)
+- Derived columns (Salary Band, Satisfaction Levels, Age calculation)
+- Pivot table analysis and KPI dashboards
+- Conditional formatting for data validation
+
+[View Full Project](./Data-Cleaning/HRDataset/)
+
+---
 
 ## Skills Demonstrated
 
 | Category | Skills |
 |----------|--------|
-| **Data Analysis** | Pivot Tables, Power Pivot, Data Modeling, Statistical Analysis |
-| **Visualization** | Charts, Dashboards, Conditional Formatting, Sparklines |
-| **Advanced Functions** | XLOOKUP, INDEX/MATCH, ARRAY FORMULAS |
-| **Data Cleaning** | Text-to-Columns, Remove Duplicates, TRIM, CLEAN | 
-<!--| **Automation** | VBA Macros, Power Query, Office Scripts | -->
-<!-- | **Financial Modeling** | NPV, IRR, Sensitivity Analysis, What-If Scenarios | -->
-
-## Projects Overview
-
-### 1. [Sales Analysis Dashboard](./01-Sales-Analysis/)
-- **Focus**: Sales performance tracking and trend analysis
-- **Key Features**: Interactive dashboard, year-over-year comparison, regional breakdown
-- **Skills**: Pivot tables, slicers, charts, conditional formatting
-[![Sales Dashboard](./01-Sales-Analysis/images/dashboard_screenshot.png)](./01-Sales-Analysis/)
-
-<!-- ### 2. [Financial Modeling Kit](./02-Financial-Modeling/)
-- **Focus**: Budget forecasting and valuation models
-- **Key Features**: DCF model, sensitivity tables, budget variance analysis
-- **Skills**: Financial functions, data tables, scenario manager
-[![Financial Model](./02-Financial-Modeling/images/model_screenshot.png)](./02-Financial-Modeling/) 
-
-<!-- ### 3. [Inventory Management Dashboard](./03-Inventory-Dashboard/)
-- **Focus**: Real-time inventory tracking with automation
-- **Key Features**: Stock alerts, reorder points, VBA automation
-- **Skills**: VBA macros, dynamic arrays, inventory KPIs
-[![Inventory Dashboard](./03-Inventory-Dashboard/images/dashboard_preview.png)](./03-Inventory-Dashboard/) -->
-
-### 2. [Data Cleaning Pipeline](./04-Data-Cleaning/)
-- **Focus**: Transforming messy data into clean, analysis-ready datasets
-- **Key Features**: Step-by-step cleaning process, reusable formulas
-- **Skills**: Text functions, data validation, error handling
-[![Before/After](./04-Data-Cleaning/images/before_cleaning.png)](./04-Data-Cleaning/)
-
-<!-- ### 5. [Power Query ETL Process](./05-Power-Query-ETL/)
-- **Focus**: Automated data extraction, transformation, and loading
-- **Key Features**: Multi-source data merging, automated refresh
-- **Skills**: Power Query M language, data transformation, query folding
-[![Power Query](./05-Power-Query-ETL/images/query_editor.png)](./05-Power-Query-ETL/)
-
-<!-- ### 6. [Advanced Formulas Collection](./06-Advanced-Formulas/)
-- **Focus**: Complex formula solutions for real business problems
-- **Key Features**: Array formulas, nested functions, dynamic arrays
-- **Skills**: XLOOKUP, FILTER, SORT, UNIQUE, LAMBDA functions
-[![Formulas](./06-Advanced-Formulas/documentation/formula_guide.md)](./06-Advanced-Formulas/) -->
-
-## Each Project Includes
-
-- **README.md** with project overview, objectives, and outcomes
-- **Raw & Cleaned Data** files for transparency
-- **Final Excel Files** with all formulas and features intact
-- **Screenshots** showing key visualizations and dashboards
-- **Documentation** explaining methodology and insights
-<!-- -**VBA Code** (if applicable) with comments-->
-
-## Portfolio Highlights
-
-- **Total Projects**: 1 comprehensive Excel projects
-- **Datasets Used**: 1 real-world business datasets
-- **Dashboards Created**:  interactive dashboards
-<!-- - **VBA Macros**: 12 automated solutions
-- **Power Query Queries**: 20+ ETL processes -->
-
-<!--## Learning Resources I Created
-
-<!-- [Excel Keyboard Shortcuts Cheat Sheet](./resources/excel_shortcuts.md)
-<!-- [Excel Functions Reference Guide](./resources/functions_reference.md)
-<!-- [Recommended Learning Path](./resources/learning_resources.md) -->
-
-## Contact
-
-- **Email**: [contacts.zainul@gmail.com](mailto:contacts.zainul@gmail.com)
-<!-- //**LinkedIn[null]**: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile ) -->
-<!-- //**Website**: [yourwebsite.com](https://yourwebsite.com ) -->
+| **Data Cleaning** | Power Query, TRIM, CLEAN, Text-to-Columns, Conditional Formatting |
+| **Analysis** | Pivot Tables, Power Pivot, Data Modeling, Statistical Functions |
+| **Advanced Functions** | IFS, SWITCH, YEARFRAC, INT, XLOOKUP |
+| **Dashboarding** | Charts, Slicers, Conditional Formatting |
 
 ---
 
-**Note**: All Excel files require Microsoft Excel 2016 or later (some features require Excel 365). VBA macros need to be enabled to run automated features.
+[Back to Main Portfolio](../README.md)
