@@ -12,13 +12,13 @@
 
 ## What This Is
 
-Okay so first time dealing with actual HR data. Like serious HR data. The dataset has employee information — demographics, salary, departments, managers, satisfaction, performance ratings, all that [...]
+Okay so first time dealing with actual HR data. Like serious HR data. The dataset has employee information — demographics, salary, departments, managers, satisfaction, performance ratings, all that good stuff.
 
 Simple goal: clean the data, build some columns, make a dashboard.
 
-What actually happened? A lot of wtf moments, a lot of going to Reddit at 2am, learning how to actually think through problems instead of just copying formulas from Stack Overflow and AI bruh thats no[...]
+What actually happened? A lot of unexpected moments, a lot of going to Reddit at 2am, learning how to actually think through problems instead of just copying formulas from Stack Overflow and AI. You know, actually understanding what I'm doing.
 
-This README is basically me documenting the whole mess. The confusing parts too. Not just the "here's the answer" parts.
+This README is basically me documenting the whole process. The confusing parts too. Not just the "here's the answer" parts.
 
 ---
 
@@ -38,11 +38,11 @@ Before I touched anything, I just spent time looking. I wanted to understand wha
 
 ## The Duplicate Problem That Wasn't Actually A Problem
 
-First thing I noticed: `ManagerID` had bunch of same values repeating. My immediate thought was "oh shit someone duplicated the records."
+First thing I noticed: `ManagerID` had bunch of same values repeating. My immediate thought was "did someone duplicate the records?"
 
-Then I thought about it for like 5 seconds and realized... yeah, multiple people report to the same manager. That's how jobs work. Dumbass.
+Then I thought about it for like 5 seconds and realized... yeah, multiple people report to the same manager. That's how jobs work.
 
-Also saw `Webster Butler` as a manager name. Saw `N/A-StillEmployed` in some columns. Looked sus at first. Then I checked — that's just how the system marked active employees. Not an error, just how[...]
+Also saw `Webster Butler` as a manager name. Saw `N/A-StillEmployed` in some columns. Looked suspicious at first. Then I checked — that's just how the system marked active employees. Not an error, just how the data was structured.
 
 To actually check for full duplicates, I used **Conditional Formatting → Highlight Duplicate Cells**.
 
@@ -84,7 +84,7 @@ Used Conditional Formatting to highlight any cells with hidden spaces.
 
 ---
 
-# Phase 2 — The Date Format Shit That Broke My Brain
+# Phase 2 — The Date Format Nightmare
 
 Okay so this section. This took way longer than it should have.
 
@@ -94,7 +94,7 @@ My brain went: **"Since when does a year have 27 months?"**
 
 Took me longer than I want to admit to realize the dataset uses US format (MM/DD/YY) and I'm Indonesian so my brain reads DD/MM/YY automatically.
 
-Dataset wasn't broken. I was just stupid about date formats. Okay moving on.
+Dataset wasn't broken. I was just unfamiliar with the date format being used. Okay moving on.
 
 ---
 
@@ -104,7 +104,7 @@ I did some research on Reddit, Excel forums, and AI explanations, and they all p
 
 The funny thing is, this was my first time ever using Power Query. When I opened it, my immediate reaction was:
 
->*"Bruh, why does this feel like I'm sitting in an airplane cockpit?"*
+>*"Why does this feel like I'm sitting in an airplane cockpit?"*
 
 There were buttons, menus, and features everywhere. It looked overwhelming at first.
 
@@ -132,7 +132,7 @@ Eventually, I found a gem: Ken Puls' ExcelGuru article, *"Fix Date Errors"* (201
 
 When I saw the publication date, my first thought was:
 
-> *"Bruh, this article is older than my Excel skills."*
+> *"This article is older than my Excel skills."*
 
 Yet somehow, it contained exactly the explanation I needed.
 
@@ -157,7 +157,7 @@ Take `07/10/83`.
 - Or October 7th?
 
 When both numbers are ≤ 12, Excel can't tell which is which. So it guesses. Sometimes wrong.
-I got inconsistent results and had no fucking clue why at first, spent way too long on this shit.
+I got inconsistent results and had no idea why at first. Spent way too long stuck in this loop.
 
 The root cause was finally identified.
 Unfortunately, identifying the problem and fixing the problem are two very different things.
@@ -182,7 +182,7 @@ More moments of staring at Power Query wondering if I had accidentally enrolled 
 
 Eventually, I stumbled across another gem on Reddit: **"Turn 090523 text into 9/5/23 date in Power Query."**
 
-While reading through the discussion, one comment caught my attention. It was posted by a user named ***workonlyreddit***. [1](https://www.reddit.com/r/excel/comments/1d1e1fz/comment/l5tau7q/?utm_sour[...])
+While reading through the discussion, one comment caught my attention. It was posted by a user named ***workonlyreddit***. [1](https://www.reddit.com/r/excel/comments/1d1e1fz/comment/l5tau7q/?utm_source=share&utm_medium=web2x&context=3)
 
 <img width="751" height="293" alt="image" src="https://github.com/user-attachments/assets/f7df3f7f-a740-4901-828b-2b228d32bb80" />
 
@@ -197,9 +197,9 @@ The idea was simple:
 
 That was the breakthrough.
 
-## Then How i Fixed it?
+## Then How I Fixed It
 
-Instead of relying on automatic date parsing, I explicitly told Power Query which number represented the month, day, and year Manually.
+Instead of relying on automatic date parsing, I explicitly told Power Query which number represented the month, day, and year manually.
 
 **Step 1:** Split DOB by `/` into three columns → `DOB.1`, `DOB.2`, `DOB.3`
 
@@ -231,7 +231,7 @@ I am explicitly telling it:
 
 **Step 4:** Change the resulting column type using the Indonesian locale
 
-**Result:** Every date came out DD/MM/YYYY. Consistent. Finally After hours of research, testing, and questioning my life choices, the solution turned out to be surprisingly simple.
+**Result:** Every date came out DD/MM/YYYY. Consistent. Finally. After hours of research, testing, and questioning my approach, the solution turned out to be surprisingly simple.
 
 ---
 
@@ -297,7 +297,7 @@ Used `SWITCH()` and `INT()` to convert. Now I could actually calculate averages 
 
 ## Age — The Confusing Part
 
-Here's the thing: First time working with HR data. Didn't even know what DOB meant. Like I'm looking at this dataset going "what is this abbreviation?" So I researched what it meant before doing anyth[...]
+Here's the thing: First time working with HR data. Didn't even know what DOB meant. Like I'm looking at this dataset going "what is this abbreviation?" So I researched what it meant before doing anything.
 
 DOB = Date of Birth. Okay. Cool.
 
@@ -307,24 +307,9 @@ Researched Reddit, Quora, forums. Everyone said use `DATEDIF()`.
 
 **You know what's funny?** My Excel didn't even have the `DATEDIF()` function.
 
-At that point, I was annoyed.
+At that point, I was frustrated. I really wanted to find what was causing the issue. I investigated my Office installation, my Excel version, my laptop settings—everything—convinced something had to be misconfigured.
 
-I wanted someone to blame.
-I wanted to blame Microsoft, Then Windows, Then Linux,Then Linus Torvalds, Then Apple ,Then Samsung, Then SpaceX.
-
-I was running out of targets.
-
-Then I thought about blaming my number one enemy—the thing I'm always ready to complain about:
-
-my gov—
-
-Whoa, whoa, whoa. that's too far.
-
-i love my goverment.
-
-The point is, I was convinced something had to be broken. My Office installation, my Excel version, my laptop, the alignment of the planets—anything except the possibility that I was simply looking [...]
-
-And i do More research and Found `INT()` + `YEARFRAC()` combo:
+Then I did more research and found the `INT()` + `YEARFRAC()` combo:
 
 ```excel
 =INT(YEARFRAC([@DOB];TODAY();1))
@@ -334,7 +319,7 @@ Breaking it down:
 - `YEARFRAC` calculates year difference as a decimal. Like `42.7` years.
 - `INT` strips the decimal. So `42`.
 - `TODAY()` = I don't hardcode a date. It just always uses today.
-- The `1` at the end = day count convention. `1` = Actual/Actual (DD/MM/YY). `0` = US format. After everything I went through with US date shit, I chose `1`.
+- The `1` at the end = day count convention. `1` = Actual/Actual (DD/MM/YY). `0` = US format. After everything I went through with US date formats, I chose `1`.
 
 Tested with DOB `10/07/1983` → got **42**. Correct.
 
@@ -344,7 +329,7 @@ Tested with DOB `10/07/1983` → got **42**. Correct.
 
 # Phase 4 — Pivot Tables & Dashboard
 
-This part was actually chill after the date format nightmare.
+This part was actually straightforward after the date format challenge.
 
 By now the hard work was done. Data cleaned, columns built, everything typed correctly. Pivot Tables just summarize what's there — they don't fix anything.
 
@@ -387,9 +372,9 @@ This whole project taught me that analyst work isn't:
 
 It's actually:
 
-> Look at data → Understand it → Find weird shit → Research why → Fix it properly → Then analyze
+> Look at data → Understand it → Find unexpected issues → Research why → Fix it properly → Then analyze
 
-Sometimes the "fix" is realizing the data isn't actually broken, you just need an internet and surface.
+Sometimes the "fix" is realizing the data isn't actually broken, you just need internet connectivity and problem-solving focus.
 
 ---
 
