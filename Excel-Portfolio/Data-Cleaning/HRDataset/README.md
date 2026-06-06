@@ -13,95 +13,87 @@
 ## Project Flow
 
 ```mermaid
-%%{ init: { 'theme': 'dark', 'themeVariables': { 'fontFamily': 'Arial, sans-serif', 'fontSize': '13px', 'background': 'transparent', 'mainBkg': 'transparent', 'canvasBackground': 'transparent', 'primaryColor': '#1e293b', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#0f172a', 'lineColor': '#64748b' }, 'flowchart': { 'useMaxWidth': true, 'padding': '40' } } %%
-
+%%{ init: { 'theme': 'dark', 'themeVariables': { 'fontFamily': 'system-ui, sans-serif', 'fontSize': '12px', 'background': 'transparent', 'mainBkg': 'transparent', 'canvasBackground': 'transparent' } } }%%
 flowchart TD
-    %% --- NODE STYLE DEFINITIONS ---
-    classDef inputNode fill:#f1f5f9,stroke:#cbd5e1,stroke-width:2px,color:#1e293b,font-family:Arial,font-size:13px;
-    classDef phaseHeader fill:#1e293b,stroke:#0f172a,stroke-width:2px,color:#ffffff,font-family:Arial,font-weight:bold,font-size:14px;
-    classDef processStep fill:#ffffff,stroke:#e2e8f0,stroke-width:1px,color:#334155,font-family:Arial,font-size:13px;
-    classDef checkNode fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#78350f,font-family:Arial,font-size:13px;
-    classDef formulaNode fill:#f0fdfa,stroke:#0d9488,stroke-width:2px,color:#115e59,font-family:Arial,font-size:13px;
-    classDef outputNode fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#166534,font-family:Arial,font-weight:bold,font-size:13px;
+    %% --- SEAMLESS CLASS DEFINITIONS ---
+    classDef inputNode fill:#f1f5f9,stroke:#cbd5e1,stroke-width:2px,color:#1e293b;
+    classDef phaseHeader fill:#1e293b,stroke:#0f172a,stroke-width:1px,color:#ffffff;
+    classDef processStep fill:#ffffff,stroke:#e2e8f0,stroke-width:1px,color:#334155;
+    classDef checkNode fill:#fffbeb,stroke:#f59e0b,stroke-width:1px,color:#78350f;
+    classDef formulaNode fill:#f0fdfa,stroke:#0d9488,stroke-width:1px,color:#115e59;
+    classDef outputNode fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#166534;
 
-    %% --- PHASE 1: DATA ASSESSMENT ---
-    A["Raw Data Input<br/>(311 Records)"]:::inputNode
+    %% --- PHASE 1 ---
+    A["<div style='width:160px;'>Raw Data Input<br>(311 Records)</div>"]:::inputNode
 
     subgraph P1 ["DATA ASSESSMENT"]
-        B["Phase 1:<br/>Data Assessment"]:::phaseHeader
-        B1{"Check for<br/>Issues?"}:::checkNode
-        B2["Duplicates Check"]:::processStep
-        B3["Missing Data Check"]:::processStep
-        B4["Format Issues Check"]:::processStep
-        B5["No Duplicates"]:::processStep
-        B6["Clean Data"]:::processStep
-        B7["Date & Salary Format"]:::checkNode
+        B["<div style='width:160px;'>Phase 1:<br>Data Assessment</div>"]:::phaseHeader
+        B1{"<div style='width:120px;'>Check for<br>Issues?</div>"}:::checkNode
+        B2["<div style='width:160px;'>Duplicates Check</div>"]:::processStep
+        B3["<div style='width:160px;'>Missing Data Check</div>"]:::processStep
+        B4["<div style='width:160px;'>Format Issues Check</div>"]:::processStep
+        
+        B5["<div style='width:160px;'>Result:<br>No Duplicates</div>"]:::processStep
+        B6["<div style='width:160px;'>Result:<br>Clean Data</div>"]:::processStep
+        B7["<div style='width:160px;'>Issue Found:<br>Date & Salary Format</div>"]:::checkNode
     end
 
-    %% --- PHASE 2: DATA TRANSFORMATION ---
-    subgraph P2 ["DATA TRANSFORMATION ETL"]
-        C["Phase 2:<br/>Date Format Fix"]:::phaseHeader
-        C1["Import to<br/>Power Query"]:::processStep
-        C2["Split DOB by /"]:::processStep
-        C3["Rebuild Date Manually<br/>#date MM/DD/YY<br/>to DD/MM/YYYY"]:::formulaNode
-        C4["Convert to<br/>IDN Locale"]:::processStep
-        C5["Consistent Dates"]:::outputNode
+    %% --- PHASE 2 ---
+    subgraph P2 ["DATA TRANSFORMATION (ETL)"]
+        C["<div style='width:160px;'>Phase 2:<br>Date Format Fix</div>"]:::phaseHeader
+        C1["<div style='width:160px;'>Import to<br>Power Query</div>"]:::processStep
+        C2["<div style='width:160px;'>Split DOB<br>by '/'</div>"]:::processStep
+        C3["<div style='width:160px;'>Rebuild Date Manually<br>#date MM/DD/YY<br>→ DD/MM/YYYY</div>"]:::processStep
+        C4["<div style='width:160px;'>Convert to<br>IDN Locale</div>"]:::processStep
+        C5["<div style='width:160px;'>Result:<br>Consistent Dates</div>"]:::outputNode
     end
 
-    %% --- PHASE 3: FEATURE ENGINEERING ---
+    %% --- PHASE 3 ---
     subgraph P3 ["FEATURE ENGINEERING"]
-        D["Phase 3:<br/>Derived Columns"]:::phaseHeader
-        D1["Salary Band<br/>IFS Formula"]:::formulaNode
-        D2["Satisfaction Level<br/>IFS Formula"]:::formulaNode
-        D3["Age Calculation<br/>YEARFRAC"]:::formulaNode
-        D4["Low / Medium / High"]:::outputNode
-        D5["Very Satisfied to<br/>Dissatisfied"]:::outputNode
-        D6["Age in Years"]:::outputNode
+        D["<div style='width:160px;'>Phase 3:<br>Derived Columns</div>"]:::phaseHeader
+        D1["<div style='width:160px;'>Salary Band<br>(IFS Formula)</div>"]:::formulaNode
+        D2["<div style='width:160px;'>Satisfaction Level<br>(IFS Formula)</div>"]:::formulaNode
+        D3["<div style='width:160px;'>Age Calculation<br>(YEARFRAC)</div>"]:::formulaNode
+        
+        D4["<div style='width:160px;'>Low / Medium / High</div>"]:::outputNode
+        D5["<div style='width:160px;'>Very Satisfied to<br>Dissatisfied</div>"]:::outputNode
+        D6["<div style='width:160px;'>Age in Years</div>"]:::outputNode
     end
 
-    %% --- PHASE 4: BUSINESS INTELLIGENCE ---
+    %% --- PHASE 4 ---
     subgraph P4 ["BUSINESS INTELLIGENCE"]
-        E["Phase 4:<br/>Dashboard"]:::phaseHeader
-        E1["Create Pivot Tables"]:::processStep
-        E2["Build Core Metrics"]:::processStep
-        E3["Dashboard<br/>Visualization"]:::processStep
+        E["<div style='width:160px;'>Phase 4:<br>Dashboard</div>"]:::phaseHeader
+        E1["<div style='width:160px;'>Create Pivot Tables</div>"]:::processStep
+        E2["<div style='width:160px;'>Build Core Metrics</div>"]:::processStep
+        E3["<div style='width:160px;'>Dashboard<br>Visualization</div>"]:::processStep
     end
 
-    F["Final Output:<br/>Complete Dashboard"]:::outputNode
+    F["<div style='width:160px;'>Final Output:<br>Complete Dashboard</div>"]:::outputNode
 
     %% --- PIPELINE CONNECTIONS ---
     A --> B
     B --> B1
-    B1 --> B2
-    B1 --> B3
-    B1 --> B4
+    
+    B1 --> B2 & B3 & B4
     B2 --> B5
     B3 --> B6
     B4 --> B7
-    B5 --> C
-    B6 --> C
-    B7 --> C
-    C --> C1
-    C1 --> C2
-    C2 --> C3
-    C3 --> C4
-    C4 --> C5
+    
+    B5 & B6 & B7 ---> C
+    
+    C --> C1 --> C2 --> C3 --> C4 --> C5
+    
     C5 --> D
-    D --> D1
-    D --> D2
-    D --> D3
+    D --> D1 & D2 & D3
     D1 --> D4
     D2 --> D5
     D3 --> D6
-    D4 --> E
-    D5 --> E
-    D6 --> E
-    E --> E1
-    E1 --> E2
-    E2 --> E3
+    
+    D4 & D5 & D6 ---> E
+    E --> E1 --> E2 --> E3
     E3 --> F
 
-    %% --- HIDE SUBGRAPH BORDERS ---
+    %% --- REMOVE SUBGRAPH BORDERS & BACKGROUNDS ---
     style P1 fill:none,stroke:none;
     style P2 fill:none,stroke:none;
     style P3 fill:none,stroke:none;
