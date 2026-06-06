@@ -10,13 +10,66 @@
 
 ---
 
+## Project Flow
+
+```mermaid
+flowchart TD
+    A["Raw Data<br/>311 Employee Records"] --> B["Phase 1: Data Assessment"]
+    
+    B --> B1{"Check for Issues"}
+    B1 --> B2["Duplicates Check"]
+    B1 --> B3["Missing Data Check"]
+    B1 --> B4["Format Issues Check"]
+    
+    B2 --> B5["Result: No Duplicates"]
+    B3 --> B6["Result: Clean Data"]
+    B4 --> B7["Issue Found:<br/>Date Format & Salary Format"]
+    
+    B5 --> C["Phase 2: Date Format Fix"]
+    B6 --> C
+    B7 --> C
+    
+    C --> C1["Import to Power Query"]
+    C1 --> C2["Split DOB by /"]
+    C2 --> C3["Rebuild Date Manually<br/>#date MM/DD/YY → DD/MM/YYYY"]
+    C3 --> C4["Convert to Indonesian Locale"]
+    C4 --> C5["Result: Consistent Dates"]
+    
+    C5 --> D["Phase 3: Create Derived Columns"]
+    
+    D --> D1["Salary Band<br/>IFS Formula"]
+    D --> D2["Satisfaction Level<br/>IFS Formula"]
+    D --> D3["Age Calculation<br/>INT YEARFRAC"]
+    
+    D1 --> D4["Low/Medium/High"]
+    D2 --> D5["Very Satisfied/Satisfied/Neutral/Dissatisfied"]
+    D3 --> D6["Age in Years"]
+    
+    D4 --> E["Phase 4: Analysis & Dashboard"]
+    D5 --> E
+    D6 --> E
+    
+    E --> E1["Create Pivot Tables"]
+    E1 --> E2["Build Metrics"]
+    E2 --> E3["Dashboard Visualization"]
+    
+    E3 --> F["Final Output<br/>Complete Analysis Dashboard"]
+    
+    style A fill:#e1f5ff
+    style F fill:#c8e6c9
+    style C fill:#fff9c4
+    style E fill:#f3e5f5
+```
+
+---
+
 ## What This Is
 
-Okay so first time dealing with actual HR data. Like serious HR data. The dataset has employee information — demographics, salary, departments, managers, satisfaction, performance ratings, all that good stuff.
+Okay so first time dealing with actual HR data. Like serious HR data. The dataset has employee information — demographics, salary, departments, managers, satisfaction, performance ratings, all that.
 
 Simple goal: clean the data, build some columns, make a dashboard.
 
-What actually happened? A lot of unexpected moments, a lot of going to Reddit at 2am, learning how to actually think through problems instead of just copying formulas from Stack Overflow and AI. You know, actually understanding what I'm doing.
+What actually happened? A lot of unexpected moments, a lot of going to Reddit at 2am, learning how to actually think through problems instead of just copying formulas from Stack Overflow and AI. Yeah, that's the real learning part.
 
 This README is basically me documenting the whole process. The confusing parts too. Not just the "here's the answer" parts.
 
@@ -42,7 +95,7 @@ First thing I noticed: `ManagerID` had bunch of same values repeating. My immedi
 
 Then I thought about it for like 5 seconds and realized... yeah, multiple people report to the same manager. That's how jobs work.
 
-Also saw `Webster Butler` as a manager name. Saw `N/A-StillEmployed` in some columns. Looked suspicious at first. Then I checked — that's just how the system marked active employees. Not an error, just how the data was structured.
+Also saw `Webster Butler` as a manager name. Saw `N/A-StillEmployed` in some columns. Looked suspicious at first. Then I checked — that's just how the system marked active employees. Not an error.
 
 To actually check for full duplicates, I used **Conditional Formatting → Highlight Duplicate Cells**.
 
@@ -182,7 +235,7 @@ More moments of staring at Power Query wondering if I had accidentally enrolled 
 
 Eventually, I stumbled across another gem on Reddit: **"Turn 090523 text into 9/5/23 date in Power Query."**
 
-While reading through the discussion, one comment caught my attention. It was posted by a user named ***workonlyreddit***. [1](https://www.reddit.com/r/excel/comments/1d1e1fz/comment/l5tau7q/?utm_source=share&utm_medium=web2x&context=3)
+While reading through the discussion, one comment caught my attention. It was posted by a user named ***workonlyreddit***.
 
 <img width="751" height="293" alt="image" src="https://github.com/user-attachments/assets/f7df3f7f-a740-4901-828b-2b228d32bb80" />
 
@@ -307,7 +360,7 @@ Researched Reddit, Quora, forums. Everyone said use `DATEDIF()`.
 
 **You know what's funny?** My Excel didn't even have the `DATEDIF()` function.
 
-At that point, I was frustrated. I really wanted to find what was causing the issue. I investigated my Office installation, my Excel version, my laptop settings—everything—convinced something had to be misconfigured.
+At that point, I was frustrated. I really wanted to find what was causing the issue. I investigated my Office installation, my Excel version, my laptop settings—everything—convinced something was wrong.
 
 Then I did more research and found the `INT()` + `YEARFRAC()` combo:
 
