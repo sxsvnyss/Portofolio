@@ -13,102 +13,146 @@
 ## Project Flow
 
 ```mermaid
-%%{ init: { 'theme': 'dark', 'themeVariables': { 'fontFamily': 'system-ui, sans-serif', 'fontSize': '12px', 'background': 'transparent', 'mainBkg': 'transparent', 'canvasBackground': 'transparent' } } }%%
+%%{ init: { 'theme': 'dark', 'themeVariables': { 'fontFamily': 'Arial, sans-serif', 'fontSize': '13px', 'background': 'transparent', 'mainBkg': 'transparent', 'canvasBackground': 'transparent', 'primaryColor': '#1e293b', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#0f172a', 'lineColor': '#64748b' }, 'flowchart': { 'useMaxWidth': true, 'padding': '40' } } %%
+
 flowchart TD
-    %% --- SEAMLESS CLASS DEFINITIONS ---
-    classDef inputNode fill:#f1f5f9,stroke:#cbd5e1,stroke-width:2px,color:#1e293b;
-    classDef phaseHeader fill:#1e293b,stroke:#0f172a,stroke-width:1px,color:#ffffff;
-    classDef processStep fill:#ffffff,stroke:#e2e8f0,stroke-width:1px,color:#334155;
-    classDef checkNode fill:#fffbeb,stroke:#f59e0b,stroke-width:1px,color:#78350f;
-    classDef formulaNode fill:#f0fdfa,stroke:#0d9488,stroke-width:1px,color:#115e59;
-    classDef outputNode fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#166534;
+    %% --- NODE STYLE DEFINITIONS ---
+    classDef inputNode fill:#f1f5f9,stroke:#cbd5e1,stroke-width:2px,color:#1e293b,font-family:Arial,font-size:13px;
+    classDef phaseHeader fill:#1e293b,stroke:#0f172a,stroke-width:2px,color:#ffffff,font-family:Arial,font-weight:bold,font-size:14px;
+    classDef processStep fill:#ffffff,stroke:#e2e8f0,stroke-width:1px,color:#334155,font-family:Arial,font-size:13px;
+    classDef checkNode fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#78350f,font-family:Arial,font-size:13px;
+    classDef formulaNode fill:#f0fdfa,stroke:#0d9488,stroke-width:2px,color:#115e59,font-family:Arial,font-size:13px;
+    classDef outputNode fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#166534,font-family:Arial,font-weight:bold,font-size:13px;
 
-    %% --- PHASE 1 ---
-    A["<div style='width:160px;'>Raw Data Input<br>(311 Records)</div>"]:::inputNode
+    %% --- PHASE 1: DATA ASSESSMENT ---
+    A["Raw Data Input<br/>(311 Records)"]:::inputNode
 
-    subgraph P1 ["DATA ASSESSMENT"]
-        B["<div style='width:160px;'>Phase 1:<br>Data Assessment</div>"]:::phaseHeader
-        B1{"<div style='width:120px;'>Check for<br>Issues?</div>"}:::checkNode
-        B2["<div style='width:160px;'>Duplicates Check</div>"]:::processStep
-        B3["<div style='width:160px;'>Missing Data Check</div>"]:::processStep
-        B4["<div style='width:160px;'>Format Issues Check</div>"]:::processStep
-        
-        B5["<div style='width:160px;'>Result:<br>No Duplicates</div>"]:::processStep
-        B6["<div style='width:160px;'>Result:<br>Clean Data</div>"]:::processStep
-        B7["<div style='width:160px;'>Issue Found:<br>Date & Salary Format</div>"]:::checkNode
+    subgraph P1 ["🔍 DATA ASSESSMENT"]
+        B["Phase 1:<br/>Data Assessment"]:::phaseHeader
+        B_spacer1["<br/>"]
+        B1{"Check for<br/>Issues?"}:::checkNode
+        B_spacer2["<br/>"]
+        B2["Duplicates Check"]:::processStep
+        B3["Missing Data Check"]:::processStep
+        B4["Format Issues Check"]:::processStep
+        B_spacer3["<br/>"]
+        B5["✓ No Duplicates"]:::processStep
+        B6["✓ Clean Data"]:::processStep
+        B7["⚠ Date & Salary Format"]:::checkNode
     end
 
-    %% --- PHASE 2 ---
-    subgraph P2 ["DATA TRANSFORMATION (ETL)"]
-        C["<div style='width:160px;'>Phase 2:<br>Date Format Fix</div>"]:::phaseHeader
-        C1["<div style='width:160px;'>Import to<br>Power Query</div>"]:::processStep
-        C2["<div style='width:160px;'>Split DOB<br>by '/'</div>"]:::processStep
-        C3["<div style='width:160px;'>Rebuild Date Manually<br>#date MM/DD/YY<br>→ DD/MM/YYYY</div>"]:::processStep
-        C4["<div style='width:160px;'>Convert to<br>IDN Locale</div>"]:::processStep
-        C5["<div style='width:160px;'>Result:<br>Consistent Dates</div>"]:::outputNode
+    %% --- PHASE 2: DATA TRANSFORMATION ---
+    subgraph P2 ["🔄 DATA TRANSFORMATION ETL"]
+        C["Phase 2:<br/>Date Format Fix"]:::phaseHeader
+        C_spacer1["<br/>"]
+        C1["Import to<br/>Power Query"]:::processStep
+        C_spacer2["<br/>"]
+        C2["Split DOB by /"]:::processStep
+        C_spacer3["<br/>"]
+        C3["Rebuild Date Manually<br/>#date MM/DD/YY<br/>→ DD/MM/YYYY"]:::formulaNode
+        C_spacer4["<br/>"]
+        C4["Convert to<br/>IDN Locale"]:::processStep
+        C_spacer5["<br/>"]
+        C5["✓ Consistent Dates"]:::outputNode
     end
 
-    %% --- PHASE 3 ---
-    subgraph P3 ["FEATURE ENGINEERING"]
-        D["<div style='width:160px;'>Phase 3:<br>Derived Columns</div>"]:::phaseHeader
-        D1["<div style='width:160px;'>Salary Band<br>(IFS Formula)</div>"]:::formulaNode
-        D2["<div style='width:160px;'>Satisfaction Level<br>(IFS Formula)</div>"]:::formulaNode
-        D3["<div style='width:160px;'>Age Calculation<br>(YEARFRAC)</div>"]:::formulaNode
-        
-        D4["<div style='width:160px;'>Low / Medium / High</div>"]:::outputNode
-        D5["<div style='width:160px;'>Very Satisfied to<br>Dissatisfied</div>"]:::outputNode
-        D6["<div style='width:160px;'>Age in Years</div>"]:::outputNode
+    %% --- PHASE 3: FEATURE ENGINEERING ---
+    subgraph P3 ["⚙️ FEATURE ENGINEERING"]
+        D["Phase 3:<br/>Derived Columns"]:::phaseHeader
+        D_spacer1["<br/>"]
+        D1["Salary Band<br/>(IFS Formula)"]:::formulaNode
+        D2["Satisfaction Level<br/>(IFS Formula)"]:::formulaNode
+        D3["Age Calculation<br/>(YEARFRAC)"]:::formulaNode
+        D_spacer2["<br/>"]
+        D4["Low / Medium / High"]:::outputNode
+        D5["Very Satisfied to<br/>Dissatisfied"]:::outputNode
+        D6["Age in Years"]:::outputNode
     end
 
-    %% --- PHASE 4 ---
-    subgraph P4 ["BUSINESS INTELLIGENCE"]
-        E["<div style='width:160px;'>Phase 4:<br>Dashboard</div>"]:::phaseHeader
-        E1["<div style='width:160px;'>Create Pivot Tables</div>"]:::processStep
-        E2["<div style='width:160px;'>Build Core Metrics</div>"]:::processStep
-        E3["<div style='width:160px;'>Dashboard<br>Visualization</div>"]:::processStep
+    %% --- PHASE 4: BUSINESS INTELLIGENCE ---
+    subgraph P4 ["📊 BUSINESS INTELLIGENCE"]
+        E["Phase 4:<br/>Dashboard"]:::phaseHeader
+        E_spacer1["<br/>"]
+        E1["Create Pivot Tables"]:::processStep
+        E_spacer2["<br/>"]
+        E2["Build Core Metrics"]:::processStep
+        E_spacer3["<br/>"]
+        E3["Dashboard<br/>Visualization"]:::processStep
     end
 
-    F["<div style='width:160px;'>Final Output:<br>Complete Dashboard</div>"]:::outputNode
+    F["✓ Final Output:<br/>Complete Dashboard"]:::outputNode
 
     %% --- PIPELINE CONNECTIONS ---
     A --> B
-    B --> B1
+    B --> B_spacer1 --> B1
+    B1 --> B_spacer2 --> B2
+    B1 --> B3
+    B1 --> B4
     
-    B1 --> B2 & B3 & B4
-    B2 --> B5
+    B2 --> B_spacer3 --> B5
     B3 --> B6
     B4 --> B7
     
-    B5 & B6 & B7 ---> C
+    B5 --> C
+    B6 --> C
+    B7 --> C
     
-    C --> C1 --> C2 --> C3 --> C4 --> C5
+    C --> C_spacer1 --> C1
+    C1 --> C_spacer2 --> C2
+    C2 --> C_spacer3 --> C3
+    C3 --> C_spacer4 --> C4
+    C4 --> C_spacer5 --> C5
     
     C5 --> D
-    D --> D1 & D2 & D3
-    D1 --> D4
+    D --> D_spacer1 --> D1
+    D --> D2
+    D --> D3
+    
+    D1 --> D_spacer2 --> D4
     D2 --> D5
     D3 --> D6
     
-    D4 & D5 & D6 ---> E
-    E --> E1 --> E2 --> E3
+    D4 --> E
+    D5 --> E
+    D6 --> E
+    
+    E --> E_spacer1 --> E1
+    E1 --> E_spacer2 --> E2
+    E2 --> E_spacer3 --> E3
     E3 --> F
 
-    %% --- REMOVE SUBGRAPH BORDERS & BACKGROUNDS ---
+    %% --- HIDE SUBGRAPH BORDERS ---
     style P1 fill:none,stroke:none;
     style P2 fill:none,stroke:none;
     style P3 fill:none,stroke:none;
     style P4 fill:none,stroke:none;
+    
+    %% --- HIDE SPACER NODES ---
+    style B_spacer1 fill:none,stroke:none;
+    style B_spacer2 fill:none,stroke:none;
+    style B_spacer3 fill:none,stroke:none;
+    style C_spacer1 fill:none,stroke:none;
+    style C_spacer2 fill:none,stroke:none;
+    style C_spacer3 fill:none,stroke:none;
+    style C_spacer4 fill:none,stroke:none;
+    style C_spacer5 fill:none,stroke:none;
+    style D_spacer1 fill:none,stroke:none;
+    style D_spacer2 fill:none,stroke:none;
+    style E_spacer1 fill:none,stroke:none;
+    style E_spacer2 fill:none,stroke:none;
+    style E_spacer3 fill:none,stroke:none;
 
 ```
+
 ---
 
 ## What This Is
 
-Okay so first time dealing with actual HR data. Like serious HR data. The dataset has employee information — demographics, salary, departments, managers, satisfaction, performance ratings, all that.
+Okay so first time dealing with actual HR data. Like serious HR data. The dataset has employee information — demographics, salary, departments, managers, satisfaction, performance ratings, all of it.
 
 Simple goal: clean the data, build some columns, make a dashboard.
 
-What actually happened? A lot of unexpected moments, a lot of going to Reddit at 2am, learning how to actually think through problems instead of just copying formulas from Stack Overflow and AI. Yeah, that's the real learning part.
+What actually happened? A lot of unexpected moments, a lot of going to Reddit at 2am, learning how to actually think through problems instead of just copying formulas from Stack Overflow and AI.
 
 This README is basically me documenting the whole process. The confusing parts too. Not just the "here's the answer" parts.
 
@@ -399,7 +443,7 @@ Researched Reddit, Quora, forums. Everyone said use `DATEDIF()`.
 
 **You know what's funny?** My Excel didn't even have the `DATEDIF()` function.
 
-At that point, I was frustrated. I really wanted to find what was causing the issue. I investigated my Office installation, my Excel version, my laptop settings—everything—convinced something was wrong.
+At that point, I was frustrated. I really wanted to find what was causing the issue. I investigated my Office installation, my Excel version, my laptop settings—everything—convinced something was wrong with my setup.
 
 Then I did more research and found the `INT()` + `YEARFRAC()` combo:
 
