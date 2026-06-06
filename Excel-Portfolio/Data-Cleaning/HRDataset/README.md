@@ -27,7 +27,7 @@ flowchart TD
     %% --- PHASE 1: DATA ASSESSMENT ---
     A["Raw Data Input<br/>(311 Records)"]:::inputNode
 
-    subgraph P1 ["🔍 DATA ASSESSMENT"]
+    subgraph P1 ["DATA ASSESSMENT"]
         B["Phase 1:<br/>Data Assessment"]:::phaseHeader
         B_spacer1["<br/>"]
         B1{"Check for<br/>Issues?"}:::checkNode
@@ -36,13 +36,13 @@ flowchart TD
         B3["Missing Data Check"]:::processStep
         B4["Format Issues Check"]:::processStep
         B_spacer3["<br/>"]
-        B5["✓ No Duplicates"]:::processStep
-        B6["✓ Clean Data"]:::processStep
-        B7["⚠ Date & Salary Format"]:::checkNode
+        B5["No Duplicates"]:::processStep
+        B6["Clean Data"]:::processStep
+        B7["Date & Salary Format"]:::checkNode
     end
 
     %% --- PHASE 2: DATA TRANSFORMATION ---
-    subgraph P2 ["🔄 DATA TRANSFORMATION ETL"]
+    subgraph P2 ["DATA TRANSFORMATION ETL"]
         C["Phase 2:<br/>Date Format Fix"]:::phaseHeader
         C_spacer1["<br/>"]
         C1["Import to<br/>Power Query"]:::processStep
@@ -53,11 +53,11 @@ flowchart TD
         C_spacer4["<br/>"]
         C4["Convert to<br/>IDN Locale"]:::processStep
         C_spacer5["<br/>"]
-        C5["✓ Consistent Dates"]:::outputNode
+        C5["Consistent Dates"]:::outputNode
     end
 
     %% --- PHASE 3: FEATURE ENGINEERING ---
-    subgraph P3 ["⚙️ FEATURE ENGINEERING"]
+    subgraph P3 ["FEATURE ENGINEERING"]
         D["Phase 3:<br/>Derived Columns"]:::phaseHeader
         D_spacer1["<br/>"]
         D1["Salary Band<br/>(IFS Formula)"]:::formulaNode
@@ -70,7 +70,7 @@ flowchart TD
     end
 
     %% --- PHASE 4: BUSINESS INTELLIGENCE ---
-    subgraph P4 ["📊 BUSINESS INTELLIGENCE"]
+    subgraph P4 ["BUSINESS INTELLIGENCE"]
         E["Phase 4:<br/>Dashboard"]:::phaseHeader
         E_spacer1["<br/>"]
         E1["Create Pivot Tables"]:::processStep
@@ -80,7 +80,7 @@ flowchart TD
         E3["Dashboard<br/>Visualization"]:::processStep
     end
 
-    F["✓ Final Output:<br/>Complete Dashboard"]:::outputNode
+    F["Final Output:<br/>Complete Dashboard"]:::outputNode
 
     %% --- PIPELINE CONNECTIONS ---
     A --> B
