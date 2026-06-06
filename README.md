@@ -1,107 +1,69 @@
 # Zainul Alim — Data Analysis & Excel Portfolio
 
-Professional portfolio showcasing expertise in data cleaning, analysis, and business intelligence through real-world projects.
+Portfolio showcasing practical skills in data analysis and Excel through project-based learning.
 
 ---
 
 ## About
 
-I am **Zainul Alim** (@sxsvnyss), a Data Analysis specialist with deep expertise in Microsoft Excel, Power Query, and data visualization. This portfolio demonstrates practical experience in enterprise data cleaning, transformation, and reporting on production datasets with 300+ records.
-
-My work focuses on solving real-world data challenges through systematic analysis, robust transformations, and actionable insights.
+I am **Zainul Alim** (@sxsvnyss), learning data analysis with a focus on Microsoft Excel and Power Query. This portfolio demonstrates my hands-on work with real datasets and Excel functions for data cleaning and analysis.
 
 ---
 
-## Core Competencies
+## Excel Skills
 
-### Data Management
-- **Power Query**: Advanced data transformation and ETL workflows
-- **Date Handling**: Format localization and cross-regional conversion
-- **Data Validation**: Quality assurance and integrity verification
-- **Text Processing**: Complex parsing and standardization
+### Lookup & Reference Functions
+- VLOOKUP, XLOOKUP
 
-### Data Analysis & Transformation
-- **Custom Columns**: Power Query expressions and derived metrics
-- **Advanced Formulas**: INT, YEARFRAC, IFS, SWITCH conditional logic
-- **Segmentation**: Salary bands, satisfaction levels, categorical analysis
-- **Data Type Management**: Conversion and validation across formats
+### Conditional Logic
+- Nested IF, IFS, SWITCH, AND, OR
 
-### Business Intelligence & Reporting
-- **Pivot Analysis**: Workforce metrics and KPI dashboards
-- **Executive Reporting**: Dashboard design and data visualization
-- **Conditional Formatting**: Data validation and visual highlighting
-- **Statistical Analysis**: Aggregation and summary reporting
+### Aggregation Functions
+- SUM, AVERAGE, COUNT, COUNTA, MAX, MIN, SUMIFS, COUNTIFS
 
-### Technical Stack
-- Microsoft Excel 365
-- Power Query (ETL & Transformation)
-- Pivot Tables & Data Modeling
-- Conditional Formatting & Visualization
+### Text Functions
+- TRIM, UPPER, LOWER, PROPER, LEFT, RIGHT, MID, LEN
+
+### Data Type Functions
+- YEARFRAC, INT, TEXT, VALUE
+
+### Error Handling
+- IFERROR, FILTER
+
+### Data Tools
+- Power Query for data transformation
+- Pivot Tables for summarization
+- Conditional Formatting for visualization
 
 ---
 
-## Featured Project
+## Project
 
 ### HR Workforce Analysis
 
-**Comprehensive analysis of 311 employee records with focus on data quality, transformation, and workforce insights.**
+**Data analysis project working with 311 employee records.**
 
 | Aspect | Details |
 |--------|---------|
 | **Dataset** | 311 employee records (Kaggle) |
-| **Focus** | Data cleaning, transformation, analytics |
-| **Scope** | HR metrics, workforce dashboard, KPI tracking |
-| **Status** | Completed |
+| **Focus** | Data cleaning and analysis |
+| **Tools** | Excel, Power Query, Pivot Tables |
 
-**Key Achievements**
-- ✓ Resolved US/Non-US date format localization issues
-- ✓ Built derived columns for salary segmentation and satisfaction scoring
-- ✓ Created comprehensive dashboard with 5+ workforce KPIs
-- ✓ Achieved 100% accuracy in date processing using Power Query
-
-**Skills Applied**
-```
-Power Query → Date Parsing & Custom Columns
-        ↓
-Advanced Formulas → INT, YEARFRAC, IFS, SWITCH
-        ↓
-Pivot Tables → KPI Development & Analysis
-        ↓
-Dashboard → Visual Reporting & Insights
-```
+**What I Worked On**
+- Cleaned and converted date formats using Power Query
+- Created salary band and satisfaction level columns using IFS
+- Built employee dashboard with Pivot Tables
+- Used YEARFRAC and INT formulas to calculate employee ages
 
 **Explore**: [View Full Project Documentation](./Excel-Portfolio/Data-Cleaning/HRDataset/)
 
 ---
 
-## Repository Structure
+## Technical Stack
 
-```
-Portfolio/
-│
-├── Excel-Portfolio/
-│   ├── Data-Cleaning/
-│   │   │
-│   │   ├── HRDataset/
-│   │   │   ├── README.md (detailed documentation)
-│   │   │   └── project files
-│   │   │
-│   │   └── README.md (overview)
-│   │
-│   └── README.md (portfolio summary)
-│
-└── README.md (this file)
-```
-
----
-
-## Technical Requirements
-
-| Requirement | Minimum | Recommended |
-|------------|---------|-------------|
-| **Excel Version** | 2016+ | 365 |
-| **Features** | Standard functions | Dynamic arrays |
-| **Power Query** | Required | Included |
+- Microsoft Excel 2016+
+- Power Query
+- Pivot Tables
 
 ---
 
@@ -111,7 +73,6 @@ Portfolio/
 |---------|---------|
 | **Email** | [contacts.zainul@gmail.com](mailto:contacts.zainul@gmail.com) |
 | **GitHub** | [@sxsvnyss](https://github.com/sxsvnyss) |
-| **Portfolio** | [github.com/sxsvnyss/Portfolio](https://github.com/sxsvnyss/Portfolio) |
 
 ---
 
