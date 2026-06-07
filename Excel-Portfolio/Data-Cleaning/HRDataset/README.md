@@ -15,7 +15,7 @@
 
 This project followed a structured workflow starting from dataset assessment and validation, continuing through data transformation and feature engineering, and ending with workforce analysis and dashboard development.
 
-### 1. High-Level Workflow
+### 1. Workflow
 
 ```mermaid
 flowchart TD
